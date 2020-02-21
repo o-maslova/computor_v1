@@ -13,5 +13,7 @@ It will create a virtual enviroment, install requirements in there and activate 
 
 ### Examples of work
 
+#### View without solving details
 ![alt-text](/images/image_1.png "View without details")
+#### View with solving details
 ![alt-text](/images/image_2.png "View with details")
