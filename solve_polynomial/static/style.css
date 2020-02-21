@@ -56,3 +56,16 @@ form {
 #solution p {
     margin-left: 25vw;
 }
+
+#details_button {
+    width: 120px;
+    height: 40px;
+    font-size: 20px;
+    border-radius: 10px;
+    background-color: coral;
+    margin: 0 auto;
+}
+
+#details {
+    display: none;
+}

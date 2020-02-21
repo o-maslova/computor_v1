@@ -4,7 +4,14 @@ from app_logic.make_reduce_form import make_reduced_form
 from app_logic.solving import solve_equation
 
 
-def solving_process(polynomial_string):
+def detail_output(details: list):
+    output = ""
+    for elem in details:
+        output += elem
+    print(output)
+
+
+def solving_process(polynomial_string, details=False):
     if not check_input(polynomial_string):
         print("It is not a polynomial equation!")
         raise SystemExit
@@ -17,11 +24,13 @@ def solving_process(polynomial_string):
         output = "The polynomial degree is strictly greater than 2, I can't solve."
     else:
         reduced, tmp = make_reduced_form(polynomial)
-        solution = solve_equation(tmp)
+        solution, details_lst = solve_equation(tmp)
         output = f"Reduced form: {reduced}\n"
         output += f"Polynomial degree: {degree}\n"
         output += solution
     print(output)
+    if details and details_lst:
+        detail_output(details_lst)
 
 
 if __name__ == '__main__':
@@ -33,6 +42,8 @@ if __name__ == '__main__':
                 solving_process(test_string)
                 test_string = fd.readline()
                 print("\n\n")
+    elif len(sys.argv) == 3 and sys.argv[2] == "-d":
+        solving_process(sys.argv[1], details=True)
     elif len(sys.argv) == 2:
         solving_process(sys.argv[1])
     else:

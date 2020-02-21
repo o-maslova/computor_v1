@@ -5,6 +5,20 @@
         <meta charset="utf-8">
         <title>Solving Polynomial</title>
         <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+        <script>
+        let showDetails = false;
+
+        function displayDetails() {
+            if (!showDetails) {
+                document.getElementById("details").style.display = "block";
+                showDetails = true;
+            }
+            else {
+                showDetails = false;
+                document.getElementById("details").style.display = "none";
+            }
+        }
+        </script>
     </head>
     <body>
     <div id="header">
@@ -16,25 +30,33 @@
             <button type="submit">Solve!</button>
         </form>
     </div>
-     {% autoescape off %}
     <div id="solution">
         {% if reduced %}
-        <p><b>Reduced form:</b> {{ reduced }}</p>
+            <p><b>Reduced form:</b> {{ reduced }}</p>
         {% endif %}
         {% if degree %}
-        <p><b>Polynomial degree:</b> {{ degree }}</p>
+            <p><b>Polynomial degree:</b> {{ degree }}</p>
         {% endif %}
         {% if solution %}
-        <p>{{ solution }}</p>
+            <p>{{ solution|safe }}</p>
         {% endif %}
-        <p>{{ details }}</p>
         {% if error %}
-        {{ error }}
+            <p>{{ error }}</p>
+        {% elif details %}
+            <input id="details_button" type="button" onclick="displayDetails()" value="Details">
         {% endif %}
-    </div>
-    {% endautoescape %}
-    <div>
-        <input type="button" onclick="details" value="Details">
+        {% autoescape off %}
+        <div id="details">
+            <p>{% for elem in details %}
+                {% if ':' in elem %}
+                    <b>{{ elem }}</b>
+                {% else %}
+                    {{ elem }}
+                {% endif %}
+            {% endfor %}
+            </p>
+        </div>
+        {% endautoescape %}
     </div>
     </body>
 </html>
