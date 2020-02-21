@@ -13,5 +13,5 @@ It will create a virtual enviroment, install requirements in there and activate 
 
 ### Examples of work
 
-![alt-text](https://github.com/o-maslova/computor_v1/tree/master/images/image_1.png "View without details")
-![alt-text](https://github.com/o-maslova/computor_v1/tree/master/images/image_2.png "View with details")
+![alt-text](/images/image_1.png "View without details")
+![alt-text](/images/image_2.png "View with details")
