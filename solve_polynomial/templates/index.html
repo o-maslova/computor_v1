@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+    <head>
+        <meta charset="utf-8">
+        <title>Solving Polynomial</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    </head>
+    <body>
+    <div id="header">
+        <p>Computor v1</p>
+    </div>
+    <div id="form">
+        <form method="POST">{% csrf_token %}
+            {{ form}}
+            <button type="submit">Solve!</button>
+        </form>
+    </div>
+     {% autoescape off %}
+    <div id="solution">
+        {% if reduced %}
+        <p><b>Reduced form:</b> {{ reduced }}</p>
+        {% endif %}
+        {% if degree %}
+        <p><b>Polynomial degree:</b> {{ degree }}</p>
+        {% endif %}
+        {% if solution %}
+        <p>{{ solution }}</p>
+        {% endif %}
+        <p>{{ details }}</p>
+        {% if error %}
+        {{ error }}
+        {% endif %}
+    </div>
+    {% endautoescape %}
+    <div>
+        <input type="button" onclick="details" value="Details">
+    </div>
+    </body>
+</html>
